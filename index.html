@@ -5,530 +5,127 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kritika Rao | Football & Tennis Predictions</title>
     <style>
-        /* Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #f8f9fa;
-            color: #222;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        .prediction-landing {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        /* Header */
-        .landing-header {
-            text-align: center;
-            padding: 40px 20px 30px;
-        }
-        
-        .logo {
-            font-size: 28px;
-            font-weight: 800;
-            color: #111;
-            letter-spacing: -0.5px;
-            margin-bottom: 5px;
-        }
-        
-        .tagline {
-            font-size: 14px;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 500;
-        }
-        
-        /* Profile Section */
-        .profile-section {
-            text-align: center;
-            padding: 30px 20px 40px;
-        }
-        
-        .profile-img-container {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 30px;
-            position: relative;
-        }
-        
-        .profile-img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            position: relative;
-            z-index: 2;
-            border: 5px solid white;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-        }
-        
-        .rgb-border {
-            position: absolute;
-            top: -6px;
-            left: -6px;
-            right: -6px;
-            bottom: -6px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #ff0055, #0099ff, #00ffaa);
-            background-size: 300% 300%;
-            z-index: 1;
-            animation: rgbRotate 3s ease infinite;
-            filter: blur(8px);
-            opacity: 0.7;
-        }
-        
-        @keyframes rgbRotate {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .main-heading {
-            font-size: 32px;
-            font-weight: 800;
-            margin: 0 0 10px;
-            color: #111;
-            line-height: 1.2;
-        }
-        
-        .sub-heading {
-            font-size: 16px;
-            color: #666;
-            margin: 0 0 35px;
-            font-weight: 500;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        /* RGB Button */
-        .rgb-btn {
-            display: inline-block;
-            background: white;
-            color: #111;
-            font-size: 18px;
-            font-weight: 700;
-            padding: 18px 45px;
-            border-radius: 50px;
-            text-decoration: none;
-            margin: 15px 0 30px;
-            position: relative;
-            z-index: 1;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border: none;
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-        
-        .rgb-btn::before {
-            content: '';
-            position: absolute;
-            top: -3px;
-            left: -3px;
-            right: -3px;
-            bottom: -3px;
-            background: linear-gradient(45deg, #ff0055, #0099ff, #00ffaa, #ff5500);
-            background-size: 400% 400%;
-            border-radius: 52px;
-            z-index: -1;
-            animation: rgbFlow 4s ease infinite;
-            filter: blur(3px);
-        }
-        
-        .rgb-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-        }
-        
-        @keyframes rgbFlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        /* Success Badges */
-        .success-badges {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 30px 0;
-            flex-wrap: wrap;
-        }
-        
-        .badge {
-            background: white;
-            color: #111;
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 14px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            border: 1px solid #eee;
-        }
-        
-        .badge.highlight {
-            background: linear-gradient(90deg, #ff0055, #0099ff);
-            color: white;
-            border: none;
-        }
-        
-        /* Features Grid */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            padding: 40px 20px;
-        }
-        
-        .feature-card {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            border: 1px solid #f0f0f0;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-        }
-        
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 28px;
-            background: #f8f9fa;
-            color: #111;
-        }
-        
-        .feature-title {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: #111;
-        }
-        
-        .feature-desc {
-            font-size: 15px;
-            color: #666;
-        }
-        
-        /* Sports Icons */
-        .sports-icons {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin: 20px 0 40px;
-        }
-        
-        .sport-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            background: white;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            border: 1px solid #f0f0f0;
-        }
-        
-        /* Countdown */
-        .countdown-section {
-            text-align: center;
-            padding: 40px 20px;
-            background: white;
-            border-radius: 25px;
-            margin: 30px 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        }
-        
-        .countdown-title {
-            font-size: 22px;
-            font-weight: 700;
-            color: #111;
-            margin-bottom: 30px;
-        }
-        
-        .countdown-container {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-        }
-        
-        .countdown-item {
-            text-align: center;
-        }
-        
-        .countdown-value {
-            font-size: 36px;
-            font-weight: 800;
-            color: #111;
-            font-family: 'SF Mono', monospace;
-            margin-bottom: 5px;
-        }
-        
-        .countdown-label {
-            font-size: 12px;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 600;
-        }
-        
-        /* Bottom Navigation */
-        .bottom-nav {
-            text-align: center;
-            padding: 30px 20px 50px;
-        }
-        
-        .nav-btn {
-            display: inline-block;
-            background: #111;
-            color: white;
-            font-size: 18px;
-            font-weight: 700;
-            padding: 18px 50px;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border: 2px solid #111;
-        }
-        
-        .nav-btn:hover {
-            background: white;
-            color: #111;
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-        }
-        
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 30px 20px;
-            color: #888;
-            font-size: 14px;
-            border-top: 1px solid #eee;
-            margin-top: 30px;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .main-heading {
-                font-size: 28px;
-            }
-            
-            .rgb-btn {
-                font-size: 16px;
-                padding: 16px 35px;
-            }
-            
-            .features-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .countdown-container {
-                gap: 15px;
-            }
-            
-            .countdown-value {
-                font-size: 28px;
-            }
-            
-            .profile-img-container {
-                width: 180px;
-                height: 180px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .main-heading {
-                font-size: 24px;
-            }
-            
-            .sub-heading {
-                font-size: 14px;
-            }
-            
-            .success-badges {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .badge {
-                width: 100%;
-                max-width: 250px;
-                text-align: center;
-            }
-            
-            .countdown-container {
-                flex-wrap: wrap;
-            }
-        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f8f9fa;color:#111;line-height:1.4;overflow-x:hidden}
+        .container{max-width:480px;margin:0 auto;padding:25px 20px 140px;min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+        .logo{font-size:28px;font-weight:900;text-align:center;color:#111;letter-spacing:-1px;margin-bottom:5px}
+        .tagline{font-size:11px;color:#666;text-align:center;text-transform:uppercase;letter-spacing:3px;margin-bottom:40px;font-weight:600}
+        .profile-img-container{width:180px;height:180px;margin:0 auto 30px;position:relative}
+        .profile-img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:6px solid white;box-shadow:0 10px 30px rgba(0,0,0,0.15);position:relative;z-index:2}
+        .rgb-border{position:absolute;top:-8px;left:-8px;right:-8px;bottom:-8px;border-radius:50%;background:linear-gradient(45deg,#ff0055,#0099ff,#00ffaa);background-size:300% 300%;z-index:1;animation:rgbRotate 4s linear infinite;filter:blur(10px);opacity:0.8}
+        @keyframes rgbRotate{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+        .main-heading{font-size:32px;font-weight:900;text-align:center;margin-bottom:15px;color:#111;line-height:1.2}
+        .sub-heading{font-size:15px;color:#666;text-align:center;margin-bottom:40px;max-width:320px;margin-left:auto;margin-right:auto;font-weight:500}
+        .timer-section{background:#fff;border-radius:15px;padding:20px;margin:30px auto;width:280px;box-shadow:0 10px 25px rgba(0,0,0,0.08);border:1px solid #f0f0f0}
+        .timer-title{font-size:14px;color:#666;text-align:center;margin-bottom:15px;text-transform:uppercase;letter-spacing:2px;font-weight:700}
+        .timer{font-size:42px;font-weight:900;text-align:center;color:#111;font-family:'Courier New',monospace;letter-spacing:2px}
+        .timer span{background:linear-gradient(90deg,#ff0055,#0099ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+        .btn-container{text-align:center;margin:35px 0}
+        .rgb-btn{display:inline-block;background:#fff;color:#111;font-size:20px;font-weight:800;padding:22px 55px;border-radius:60px;text-decoration:none;position:relative;z-index:1;box-shadow:0 15px 35px rgba(0,0,0,0.15);transition:all 0.3s ease;letter-spacing:0.5px}
+        .rgb-btn::before{content:'';position:absolute;top:-3px;left:-3px;right:-3px;bottom:-3px;background:linear-gradient(45deg,#ff0055,#0099ff,#00ffaa,#ff5500);background-size:400% 400%;border-radius:63px;z-index:-1;animation:rgbFlow 3s linear infinite;filter:blur(8px)}
+        .rgb-btn:hover{transform:translateY(-8px) scale(1.05);box-shadow:0 25px 45px rgba(0,0,0,0.2)}
+        @keyframes rgbFlow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+        .mobile-bar{position:fixed;bottom:0;left:0;right:0;z-index:1000;padding:0 20px 30px;pointer-events:none}
+        .curved-bar{background:#fff;border-radius:35px 35px 0 0;padding:25px 30px 30px;position:relative;box-shadow:0 -15px 40px rgba(0,0,0,0.15);pointer-events:auto;text-align:center}
+        .curved-bar::before{content:'';position:absolute;top:-4px;left:-4px;right:-4px;bottom:0;background:linear-gradient(45deg,#ff0055,#0099ff,#00ffaa);background-size:400% 400%;border-radius:39px 39px 0 0;z-index:-1;animation:rgbFlow 4s linear infinite;filter:blur(8px);opacity:0.7}
+        .mobile-btn{display:inline-block;width:200px;background:#fff;color:#111;font-size:18px;font-weight:800;padding:20px 0;border-radius:50px;text-decoration:none;position:relative;z-index:1;box-shadow:0 10px 30px rgba(0,0,0,0.15);transition:all 0.3s ease;letter-spacing:0.5px}
+        .mobile-btn::before{content:'';position:absolute;top:-3px;left:-3px;right:-3px;bottom:-3px;background:linear-gradient(45deg,#ff0055,#0099ff,#00ffaa);background-size:400% 400%;border-radius:53px;z-index:-1;animation:rgbFlow 3s linear infinite;filter:blur(6px)}
+        .mobile-btn:hover{transform:translateY(-5px) scale(1.05);box-shadow:0 20px 40px rgba(0,0,0,0.2)}
+        .footer{text-align:center;padding:30px 20px;color:#888;font-size:12px;margin-top:20px}
+        @media(max-width:480px){.container{padding:30px 20px 150px}.main-heading{font-size:28px}.rgb-btn{padding:20px 45px;font-size:18px}.timer{font-size:36px}}
     </style>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="prediction-landing">
-        <!-- Header -->
-        <div class="landing-header">
-            <div class="logo">KRITIKA RAO</div>
-            <div class="tagline">Professional Sports Predictions</div>
+    <div class="container">
+        <div class="logo">KRITIKA RAO</div>
+        <div class="tagline">PROFESSIONAL SPORTS PREDICTIONS</div>
+        
+        <div class="profile-img-container">
+            <div class="rgb-border"></div>
+            <img src="https://d1yei2z3i6k35z.cloudfront.net/13184094/693dd225b000f_8addd6a9-fd05-49f8-bbd4-c1baa6bfbf38.jpeg" 
+                 alt="Kritika Rao" 
+                 class="profile-img"
+                 onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE4MCAxODAiIGZpbGw9IiNmMWYyZjMiPjx0ZXh0IHg9IjkwIiB5PSI5MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjM0IiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjMTExIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+S1I8L3RleHQ+PC9zdmc+'">
         </div>
         
-        <!-- Profile Section -->
-        <div class="profile-section">
-            <div class="profile-img-container">
-                <div class="rgb-border"></div>
-                <img src="https://d1yei2z3i6k35z.cloudfront.net/13184094/693dd225b000f_8addd6a9-fd05-49f8-bbd4-c1baa6bfbf38.jpeg" 
-                     alt="Kritika Rao" 
-                     class="profile-img"
-                     onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiPjxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwMCIgcj0iOTUiIGZpbGw9IiNmMWYyZjMiLz48dGV4dCB4PSIxMDAiIHk9IjEwMCIgZm9udC1mYW1pbHk9IkludGVyIiBmb250LXNpemU9IjI0IiBmaWxsPSIjNjY2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+S1I8L3RleHQ+PC9zdmc+'">
-            </div>
-            
-            <h1 class="main-heading">KRITIKA RAO<br>FOOTBALL & TENNIS</h1>
-            <p class="sub-heading">Professional match predictions with 90%+ accuracy rate. Get daily winning tips and live updates.</p>
-            
-            <a href="https://t.me/+hjbddPzZ_AM1N2Jl" class="rgb-btn" target="_blank">JOIN FREE NOW</a>
-            
-            <!-- Success Rate Badges -->
-            <div class="success-badges">
-                <div class="badge highlight">90%+ ACCURACY</div>
-                <div class="badge">DAILY TIPS</div>
-                <div class="badge">LIVE UPDATES</div>
-                <div class="badge">EXPERT ANALYSIS</div>
-            </div>
-            
-            <!-- Sports Icons -->
-            <div class="sports-icons">
-                <div class="sport-icon">⚽</div>
-                <div class="sport-icon">🎾</div>
-            </div>
+        <h1 class="main-heading">FOOTBALL & TENNIS<br>PREDICTIONS</h1>
+        <p class="sub-heading">90%+ accuracy rate. Daily winning tips & live updates.</p>
+        
+        <div class="timer-section">
+            <div class="timer-title">Next Prediction in</div>
+            <div class="timer" id="countdown">00:<span>40</span></div>
         </div>
         
-        <!-- Features Section -->
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">📊</div>
-                <h3 class="feature-title">Football Predictions</h3>
-                <p class="feature-desc">Accurate match predictions, winning odds, and live betting tips for Premier League, Champions League & more.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">🎯</div>
-                <h3 class="feature-title">Tennis Analysis</h3>
-                <p class="feature-desc">Professional tennis match analysis, player performance insights, and winning strategies for ATP & WTA tournaments.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <h3 class="feature-title">Live Updates</h3>
-                <p class="feature-desc">Real-time match updates, in-play tips, and instant notifications for winning opportunities as they happen.</p>
-            </div>
+        <div class="btn-container">
+            <a href="https://t.me/+hjbddPzZ_AM1N2Jl" class="rgb-btn" target="_blank">JOIN TELEGRAM CHANNEL</a>
         </div>
         
-        <!-- Countdown Timer -->
-        <div class="countdown-section">
-            <h2 class="countdown-title">NEXT BIG MATCH PREDICTION IN</h2>
-            <div class="countdown-container">
-                <div class="countdown-item">
-                    <div class="countdown-value" id="cd-hours">24</div>
-                    <div class="countdown-label">HOURS</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-value" id="cd-minutes">00</div>
-                    <div class="countdown-label">MINUTES</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-value" id="cd-seconds">08</div>
-                    <div class="countdown-label">SECONDS</div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Bottom Navigation -->
-        <div class="bottom-nav">
-            <a href="https://t.me/+hjbddPzZ_AM1N2Jl" class="nav-btn" target="_blank">Join Telegram Channel</a>
-            <p style="margin-top: 20px; color: #888; font-size: 14px;">Free access • No registration required • Daily predictions</p>
-        </div>
-        
-        <!-- Footer -->
         <div class="footer">
-            <p>© 2023 Kritika Rao Sports Predictions. All predictions are for informational purposes only.</p>
+            <p>Free access • No registration required</p>
         </div>
     </div>
     
+    <div class="mobile-bar">
+        <div class="curved-bar">
+            <a href="https://t.me/+hjbddPzZ_AM1N2Jl" class="mobile-btn" target="_blank">JOIN FREE NOW</a>
+        </div>
+    </div>
+
     <script>
-        // Countdown Timer
-        (function() {
-            var hours = 24;
-            var minutes = 0;
-            var seconds = 8;
+        // 40-second countdown timer with auto-redirect
+        let seconds = 40;
+        const countdownEl = document.getElementById('countdown');
+        let redirectDone = false;
+        
+        function updateTimer() {
+            countdownEl.innerHTML = `00:<span>${seconds < 10 ? '0' : ''}${seconds}</span>`;
             
-            var hoursEl = document.getElementById('cd-hours');
-            var minutesEl = document.getElementById('cd-minutes');
-            var secondsEl = document.getElementById('cd-seconds');
-            
-            function updateTimer() {
+            if(seconds === 0 && !redirectDone) {
+                redirectDone = true;
+                // Redirect to Telegram channel after 40 seconds
+                setTimeout(() => {
+                    window.location.href = "https://t.me/+hjbddPzZ_AM1N2Jl";
+                }, 100);
+            } else if(seconds === 0) {
+                seconds = 40; // Reset to 40 seconds
+            } else {
                 seconds--;
-                
-                if (seconds < 0) {
-                    seconds = 59;
-                    minutes--;
-                    
-                    if (minutes < 0) {
-                        minutes = 59;
-                        hours--;
-                        
-                        if (hours < 0) {
-                            // Reset to 24 hours when timer reaches zero
-                            hours = 24;
-                            minutes = 0;
-                            seconds = 8;
-                        }
-                    }
-                }
-                
-                // Update display with leading zeros
-                hoursEl.textContent = hours < 10 ? '0' + hours : hours;
-                minutesEl.textContent = minutes < 10 ? '0' + minutes : minutes;
-                secondsEl.textContent = seconds < 10 ? '0' + seconds : seconds;
             }
-            
-            // Initial update
-            updateTimer();
-            
-            // Update every second
-            setInterval(updateTimer, 1000);
-            
-            // Preload image for faster loading
-            window.addEventListener('load', function() {
-                const img = new Image();
-                img.src = "https://d1yei2z3i6k35z.cloudfront.net/13184094/693dd225b000f_8addd6a9-fd05-49f8-bbd4-c1baa6bfbf38.jpeg";
+        }
+        
+        updateTimer();
+        const timerInterval = setInterval(updateTimer, 1000);
+        
+        // Preload image
+        window.addEventListener('load', function() {
+            new Image().src = "https://d1yei2z3i6k35z.cloudfront.net/13184094/693dd225b000f_8addd6a9-fd05-49f8-bbd4-c1baa6bfbf38.jpeg";
+        });
+        
+        // Add smooth hover effects
+        document.querySelectorAll('.rgb-btn, .mobile-btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = this.classList.contains('rgb-btn') 
+                    ? 'translateY(-8px) scale(1.05)' 
+                    : 'translateY(-5px) scale(1.05)';
             });
-        })();
+            
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+            
+            // For mobile touch
+            btn.addEventListener('touchstart', function() {
+                this.style.transform = this.classList.contains('rgb-btn') 
+                    ? 'translateY(-8px) scale(1.05)' 
+                    : 'translateY(-5px) scale(1.05)';
+            });
+            
+            btn.addEventListener('touchend', function() {
+                setTimeout(() => {
+                    this.style.transform = 'translateY(0) scale(1)';
+                }, 300);
+            });
+        });
     </script>
 </body>
 </html>
